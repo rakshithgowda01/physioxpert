@@ -1,8 +1,6 @@
 # PhysioXpert
 
-Marketing website for **PhysioXpert** — home physiotherapy in Whitefield, Bengaluru.
-
-**Repository:** [github.com/rakshithgowda01/physioxpert](https://github.com/rakshithgowda01/physioxpert)
+Marketing website for **PhysioXpert** — home physiotherapy in Whitefield, Bengaluru (Vite + React + Express).
 
 ## Development
 
@@ -11,14 +9,34 @@ npm install --legacy-peer-deps
 npm run dev
 ```
 
-Open the URL shown in the terminal (Vite dev server).
+## Production
+
+```bash
+npm run build
+NODE_ENV=production npm run start
+```
+
+On Windows PowerShell:
+
+```powershell
+npm run build
+$env:NODE_ENV="production"; node dist/index.js
+```
+
+The server serves the built SPA from `dist/public` and falls back to `index.html` for client routes (`/blog`, `/careers`, `/privacy`, `/terms`, etc.).
+
+### SEO after deploy
+
+Update **`client/public/robots.txt`** and **`client/public/sitemap.xml`** so every URL uses your real production domain (replace `https://physioxpert.com` if you use another host).
+
+Submit the sitemap in [Google Search Console](https://search.google.com/search-console) once the site is live.
 
 ## Scripts
 
-- `npm run dev` — start Vite dev server
-- `npm run build` — production build (client + server bundle)
-- `npm run preview` — preview production build
-- `npm run check` — TypeScript check
+- `npm run dev` — Vite dev server
+- `npm run build` — client bundle + Node server bundle
+- `npm run preview` — preview Vite build
+- `npm run check` — TypeScript
 
 ## Treatment images
 

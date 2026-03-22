@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Seo from "@/components/Seo";
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 
@@ -10,6 +11,11 @@ import { ArrowLeft } from "lucide-react";
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <Seo
+        title="Privacy Policy | PhysioXpert"
+        description="How PhysioXpert collects and uses information when you use our website or contact us for home physiotherapy in Whitefield, Bengaluru."
+        canonicalPath="/privacy"
+      />
       <Navbar />
       <main className="flex-1 pt-28 pb-16">
         <div className="container max-w-3xl">

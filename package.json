@@ -4,14 +4,6 @@
   "type": "module",
   "license": "MIT",
   "description": "PhysioXpert — marketing site for home physiotherapy in Whitefield, Bengaluru.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rakshithgowda01/physioxpert.git"
-  },
-  "bugs": {
-    "url": "https://github.com/rakshithgowda01/physioxpert/issues"
-  },
-  "homepage": "https://github.com/rakshithgowda01/physioxpert#readme",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",

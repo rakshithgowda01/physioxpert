@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "wouter";
 
-const GITHUB_REPO = "https://github.com/rakshithgowda01/physioxpert";
+const SPA_ROUTES = new Set(["/privacy", "/terms", "/blog", "/careers"]);
 
 const linkClass =
   "text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm";
 
 function FooterNavLink({ href, label }: { href: string; label: string }) {
-  if (href === "/privacy" || href === "/terms") {
+  if (SPA_ROUTES.has(href)) {
     return (
       <Link href={href} className={linkClass}>
         {label}
@@ -48,8 +48,8 @@ export default function Footer() {
       title: "Company",
       links: [
         { label: "About Dr. Lohith", href: "/#about" },
-        { label: "Blog", href: "/#" },
-        { label: "Careers", href: "/#" },
+        { label: "Blog", href: "/blog" },
+        { label: "Careers", href: "/careers" },
       ],
     },
     {
@@ -84,7 +84,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-900 text-gray-100 pt-20 pb-8">
-      {/* Main Footer Content */}
       <div className="container">
         <motion.div
           initial="hidden"
@@ -93,7 +92,6 @@ export default function Footer() {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12"
         >
-          {/* Brand Section with Logo */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-1 flex flex-col items-center md:items-start"
@@ -112,18 +110,8 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mt-3 text-center md:text-left">
               Expert physiotherapy care delivered to your home in Whitefield, Bengaluru.
             </p>
-            <a
-              href={GITHUB_REPO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm text-gray-400 hover:text-blue-400 transition-colors"
-            >
-              <Github className="h-4 w-4 shrink-0" />
-              Source on GitHub
-            </a>
           </motion.div>
 
-          {/* Links Sections */}
           {footerLinkGroups.map((group) => (
             <motion.div
               key={group.title}
@@ -141,7 +129,6 @@ export default function Footer() {
             </motion.div>
           ))}
 
-          {/* Contact Section */}
           <motion.div
             variants={itemVariants}
             className="text-center md:text-left"
@@ -164,32 +151,20 @@ export default function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* Divider */}
         <div className="border-t border-gray-800 my-8" />
 
-        {/* Bottom Section */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="flex flex-col md:flex-row items-center justify-between gap-6"
+          className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4"
         >
-          {/* Copyright */}
           <motion.p
             variants={itemVariants}
             className="text-gray-400 text-xs md:text-sm text-center md:text-left"
           >
             © {currentYear} PhysioXpert. All rights reserved. ·{" "}
-            <a
-              href={GITHUB_REPO}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400 transition-colors"
-            >
-              GitHub
-            </a>
-            {" · "}
             <Link href="/privacy" className="hover:text-blue-400 transition-colors">
               Privacy
             </Link>
@@ -197,23 +172,15 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-blue-400 transition-colors">
               Terms
             </Link>
+            {" · "}
+            <Link href="/blog" className="hover:text-blue-400 transition-colors">
+              Blog
+            </Link>
+            {" · "}
+            <Link href="/careers" className="hover:text-blue-400 transition-colors">
+              Careers
+            </Link>
           </motion.p>
-
-          {/* GitHub */}
-          <motion.div variants={itemVariants} className="flex items-center gap-4">
-            <motion.a
-              href={GITHUB_REPO}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-              className="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-600 flex items-center justify-center transition-colors duration-300"
-              aria-label="PhysioXpert on GitHub"
-            >
-              <Github className="w-5 h-5" />
-            </motion.a>
-          </motion.div>
         </motion.div>
       </div>
     </footer>

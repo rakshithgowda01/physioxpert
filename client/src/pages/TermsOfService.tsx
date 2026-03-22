@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import Seo from "@/components/Seo";
 import { Link } from "wouter";
 import { ArrowLeft } from "lucide-react";
 
@@ -10,6 +11,11 @@ import { ArrowLeft } from "lucide-react";
 export default function TermsOfService() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <Seo
+        title="Terms of Service | PhysioXpert"
+        description="Terms of use for the PhysioXpert website. Home physiotherapy information for Whitefield, Bengaluru—not a substitute for professional medical advice."
+        canonicalPath="/terms"
+      />
       <Navbar />
       <main className="flex-1 pt-28 pb-16">
         <div className="container max-w-3xl">

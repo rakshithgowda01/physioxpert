@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import FloatingWhatsAppButton from "@/components/FloatingWhatsAppButton";
 import StickyMobileBar from "@/components/StickyMobileBar";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 
 /**
  * Home Page - PhysioXpert
@@ -29,6 +30,11 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      <Seo
+        title="PhysioXpert | Home Physiotherapy in Whitefield Bengaluru | Dr. Lohith"
+        description="Expert home physiotherapy in Whitefield, Bengaluru. Pain relief, post-surgery rehab, sports injuries & elderly care. Book PhysioXpert by Dr. Lohith via call or WhatsApp."
+        canonicalPath="/"
+      />
       <Navbar />
       <main>
         <HeroSection />
