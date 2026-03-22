@@ -1,8 +1,22 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Phone, MessageCircle } from "lucide-react";
+
+function preferredTimeLabel(value: string): string {
+  switch (value) {
+    case "morning":
+      return "Morning (6 AM - 12 PM)";
+    case "afternoon":
+      return "Afternoon (12 PM - 6 PM)";
+    case "evening":
+      return "Evening (6 PM - 10 PM)";
+    default:
+      return value;
+  }
+}
 
 /**
  * Booking Section - PhysioXpert
@@ -35,7 +49,20 @@ export default function BookingSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`Thank you, ${formData.name}! We'll contact you soon at ${formData.phone}`);
+    const text = [
+      "Hello PhysioXpert, I'd like to book a home physiotherapy visit.",
+      "",
+      `Name: ${formData.name}`,
+      `Phone: ${formData.phone}`,
+      `Problem / concern: ${formData.problem}`,
+      `Preferred time: ${preferredTimeLabel(formData.preferredTime)}`,
+    ].join("\n");
+    const url = `https://wa.me/91${phoneNumber}?text=${encodeURIComponent(text)}`;
+    const opened = window.open(url, "_blank", "noopener,noreferrer");
+    if (!opened) {
+      window.location.href = url;
+    }
+    toast.success(`Thanks, ${formData.name}! WhatsApp should open with your booking message—tap Send there to confirm.`);
     setFormData({ name: "", phone: "", problem: "", preferredTime: "" });
   };
 
@@ -160,13 +187,18 @@ export default function BookingSection() {
             </motion.div>
 
             {/* Submit Button */}
-            <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants} className="space-y-2">
               <Button
                 type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 md:py-3 rounded-lg transition-all duration-300 text-sm md:text-base"
               >
-                Submit Booking Request
+                Send to WhatsApp
               </Button>
+              <p className="text-xs text-gray-500 text-center leading-relaxed">
+                Opens WhatsApp with your details filled in—tap{" "}
+                <span className="font-medium text-gray-700">Send</span> to complete the booking
+                request. Nothing is stored on this website.
+              </p>
             </motion.div>
           </motion.form>
 
