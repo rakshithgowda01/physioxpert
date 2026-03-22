@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -11,12 +10,10 @@ import { Button } from "@/components/ui/button";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems: { label: string; href: string; spa?: boolean }[] = [
+  const navItems = [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Blog", href: "/blog", spa: true },
-    { label: "Careers", href: "/careers", spa: true },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -53,40 +50,23 @@ export default function Navbar() {
 
             {/* Desktop links — centered in the middle column */}
             <div className="hidden md:flex items-center justify-center gap-5 lg:gap-7 min-w-0">
-              {navItems.map((item) =>
-                item.spa ? (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="group text-gray-700 font-medium text-sm whitespace-nowrap relative inline-block"
-                  >
-                    <motion.span
-                      className="inline-block"
-                      whileHover={{ y: -1 }}
-                      transition={{ duration: 0.2, ease: "easeOut" }}
-                    >
-                      {item.label}
-                    </motion.span>
-                    <span className="pointer-events-none absolute -bottom-0.5 left-0 right-0 h-0.5 origin-left scale-x-0 bg-gradient-to-r from-teal-600 to-orange-500 rounded-full transition-transform duration-200 ease-out group-hover:scale-x-100" />
-                  </Link>
-                ) : (
-                  <motion.a
-                    key={item.label}
-                    href={item.href}
-                    whileHover={{ y: -1 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className="text-gray-700 font-medium text-sm whitespace-nowrap relative"
-                  >
-                    {item.label}
-                    <motion.span
-                      className="absolute -bottom-0.5 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-600 to-orange-500 rounded-full"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
-                    />
-                  </motion.a>
-                ),
-              )}
+              {navItems.map((item) => (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="text-gray-700 font-medium text-sm whitespace-nowrap relative"
+                >
+                  {item.label}
+                  <motion.span
+                    className="absolute -bottom-0.5 left-0 right-0 h-0.5 origin-left bg-gradient-to-r from-teal-600 to-orange-500 rounded-full"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                  />
+                </motion.a>
+              ))}
             </div>
 
             {/* CTAs + mobile toggle */}
@@ -149,28 +129,17 @@ export default function Navbar() {
           className={`md:hidden overflow-hidden rounded-2xl border border-white/50 bg-white/50 backdrop-blur-xl shadow-lg ${isOpen ? "" : "pointer-events-none"}`}
         >
           <div className="px-4 py-3 flex flex-col gap-1">
-            {navItems.map((item) =>
-              item.spa ? (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="text-gray-800 font-medium py-2.5 px-2 rounded-xl hover:bg-white/50 transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className="text-gray-800 font-medium py-2.5 px-2 rounded-xl hover:bg-white/50 transition-colors duration-200"
-                  onClick={() => setIsOpen(false)}
-                  whileTap={{ scale: 0.99 }}
-                >
-                  {item.label}
-                </motion.a>
-              ),
-            )}
+            {navItems.map((item) => (
+              <motion.a
+                key={item.label}
+                href={item.href}
+                className="text-gray-800 font-medium py-2.5 px-2 rounded-xl hover:bg-white/50 transition-colors duration-200"
+                onClick={() => setIsOpen(false)}
+                whileTap={{ scale: 0.99 }}
+              >
+                {item.label}
+              </motion.a>
+            ))}
             <div className="flex gap-2 pt-2">
               <motion.a
                 href={`tel:+91${phoneNumber}`}

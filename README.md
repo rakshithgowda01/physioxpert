@@ -23,7 +23,7 @@ npm run build
 $env:NODE_ENV="production"; node dist/index.js
 ```
 
-The server serves the built SPA from `dist/public` and falls back to `index.html` for client routes (`/blog`, `/careers`, `/privacy`, `/terms`, etc.).
+The server serves the built SPA from `dist/public` and falls back to `index.html` for client routes (`/blog`, `/privacy`, `/terms`, etc.).
 
 ### SEO after deploy
 

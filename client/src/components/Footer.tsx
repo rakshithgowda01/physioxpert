@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "wouter";
 
-const SPA_ROUTES = new Set(["/privacy", "/terms", "/blog", "/careers"]);
+const SPA_ROUTES = new Set(["/privacy", "/terms", "/blog"]);
 
 const linkClass =
   "text-gray-400 hover:text-blue-400 transition-colors duration-300 text-sm";
@@ -49,7 +49,6 @@ export default function Footer() {
       links: [
         { label: "About Dr. Lohith", href: "/#about" },
         { label: "Blog", href: "/blog" },
-        { label: "Careers", href: "/careers" },
       ],
     },
     {
@@ -175,10 +174,6 @@ export default function Footer() {
             {" · "}
             <Link href="/blog" className="hover:text-blue-400 transition-colors">
               Blog
-            </Link>
-            {" · "}
-            <Link href="/careers" className="hover:text-blue-400 transition-colors">
-              Careers
             </Link>
           </motion.p>
         </motion.div>

@@ -145,18 +145,6 @@ export default function Blog() {
                     , or WhatsApp—we&apos;ll discuss your goals and schedule.
                   </dd>
                 </div>
-                <div>
-                  <dt className="font-semibold text-gray-900">
-                    Are you hiring physiotherapists?
-                  </dt>
-                  <dd className="mt-1 text-gray-700 leading-relaxed">
-                    See our{" "}
-                    <Link href="/careers" className="text-blue-600 font-medium hover:underline">
-                      careers page
-                    </Link>{" "}
-                    for open roles and how to apply.
-                  </dd>
-                </div>
               </dl>
             </section>
 
